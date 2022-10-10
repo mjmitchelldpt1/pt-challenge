@@ -1,9 +1,17 @@
-import React from 'react'
+import Button from "../../components/Button"
+import { useState } from "react"
 
 function Contact() {
+  const [text, setText] = useState('')
+
+  
+
   return (
     <div>
-      CONTACT
+      <form action="onSubmit">Im a form</form>
+      <input type="text" />
+      <input type="text" />
+      <Button />
     </div>
   )
 }

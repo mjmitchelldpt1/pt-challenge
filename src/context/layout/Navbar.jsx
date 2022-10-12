@@ -3,7 +3,7 @@ import { FaDumbbell } from 'react-icons/fa'
 
 function Navbar() {
   return (
-    <nav className='navbar mb-12 shadow-lg bg-gray-700 text-white h-16 '>
+    <nav className='navbar shadow-lg bg-gray-900 text-white h-16 '>
       <div className='container mx-auto'>
         <div className='flex px-2 mx-2 text-lg font-bold content-center'>
         

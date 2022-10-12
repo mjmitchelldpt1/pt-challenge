@@ -1,17 +1,10 @@
-import Button from "../../components/Button"
-import { useState } from "react"
+import ContactForm from "../../components/ContactForm"
 
 function Contact() {
-  const [text, setText] = useState('')
-
-  
 
   return (
-    <div>
-      <form action="onSubmit">Im a form</form>
-      <input type="text" />
-      <input type="text" />
-      <Button />
+    <div className="main">
+    <ContactForm />
     </div>
   )
 }

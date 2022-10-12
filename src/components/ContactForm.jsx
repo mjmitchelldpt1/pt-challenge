@@ -52,6 +52,17 @@ function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+  
+    if(name.trim().length > 3 && isValidEmail.test(email)) {
+      const newContact = {
+        name,
+        email,
+        comment,
+        feedback,
+      }
+      
+      console.log(newContact)
+    }
   }
   return (
     <div className='rounded-lg mt-12 mx-auto py-3 container flex bg-gray-500 text-white font-bold justify-center'>

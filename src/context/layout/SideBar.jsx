@@ -1,4 +1,5 @@
 import { FaHome, FaCalendarDay, FaDumbbell, FaClock  } from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 
 function SideBar() {
   const SideBarIcon = ({ icon, text }) => (
@@ -14,11 +15,10 @@ function SideBar() {
     <div className='top-16 left-0 h-screen w-16 m-0
     flex flex-col bg-gray-900 text-white shadow-lg'>
 
-      <SideBarIcon text={'Home'} icon={ <FaHome size='32'/>}  />
-      <SideBarIcon text={'Workout'} icon={ <FaDumbbell size='32'/>} />
-      <SideBarIcon text={'Calendar'} icon={<FaCalendarDay size='32'/>} />
-      <SideBarIcon text={'Timer'} icon={<FaClock size='32'/>} />
-      
+      <Link to='/'><SideBarIcon text={'Home'} icon={ <FaHome size='32'/>}  /></Link>
+      <Link to='/workout'><SideBarIcon text={'Workout'} icon={ <FaDumbbell size='32'/>} /></Link>
+      <Link to='/calendar'><SideBarIcon text={'Calendar'} icon={<FaCalendarDay size='32'/>} /></Link>
+      <Link to='/timer'><SideBarIcon text={'Timer'} icon={<FaClock size='32'/>} /></Link>
     </div>
   )
 }

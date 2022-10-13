@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { useNavigate} from 'react-router-dom'
 import Button from './Button';
+
+
 
 function ContactForm() {
   const [name, setName] = useState('')
@@ -10,36 +13,35 @@ function ContactForm() {
   const [emailMessage, setEmailMessage] = useState('')
   const [nameMessage, setNameMessage] = useState('')
   
-  const isValidEmail = /\S+@\S+\.\S+/
-  
+  const isValidEmail = /\S+@\S+\.\S+/;
+  const navigate = useNavigate()
 
-  const handleNameChange = (e) => {
-    if(e.target.value === '') {
+  const handleNameChange = ({ target: { value: name }}) => {
+    if(name === '') {
       setBtnDisabled(true)
       setNameMessage(null)
-    } else if(e.target.value.trim().length < 4) {
+    } else if(name.trim().length < 4) {
       setBtnDisabled(true)
       setNameMessage('Name 3 characters or more')
     } else {
       setBtnDisabled(false)
       setNameMessage(null)
     }
-
-    setName(e.target.value)
+    setName(name)
   }
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = ({ target: { value: email } }) => {
     if(email === '') {
       setBtnDisabled(true)
       setEmailMessage('Please enter a valid email')
-    } else if(!isValidEmail.test(e.target.value)) {
+    } else if(!isValidEmail.test(email)) {
       setBtnDisabled(true)
       setEmailMessage('Please enter a valid email')
     } else {
       setBtnDisabled(false)
       setEmailMessage(null)
     }
-    setEmail(e.target.value)
+    setEmail(email)
 } 
 
   const handleCommentChange = (e) => {
@@ -62,6 +64,7 @@ function ContactForm() {
       }
       
       console.log(newContact)
+      navigate('/')
     }
   }
   return (
@@ -87,13 +90,14 @@ function ContactForm() {
             type='text'   
             placeholder='Comment (Optional)' />
           <input className='input' 
-            onChange={handleFeedbackChange}
+          onChange={handleFeedbackChange}
             value={feedback}
             type='text' 
             placeholder='Feedback (Optional)' />
           
           <Button type='submit' isDisabled={btnDisabled} />
         </div>
+        
       </form>
     </div>
   );

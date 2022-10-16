@@ -5,67 +5,32 @@ import Button from '../../components/Button';
 
 
 function ContactForm() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [comment, setComment] = useState('')
-  const [feedback, setFeedback] = useState('')
-  const [btnDisabled, setBtnDisabled] = useState(true)
+  const [contactData, setContactData] = useState({
+    name: '',
+    email: '',
+    comment: '', 
+    feedback: ''
+  })
+
+  const { name, email, comment, feedback } = contactData
+  const [btnDisabled, setBtnDisabled] = useState(false)
   const [emailMessage, setEmailMessage] = useState('')
   const [nameMessage, setNameMessage] = useState('')
   
   const isValidEmail = /\S+@\S+\.\S+/;
   const navigate = useNavigate()
 
-  const handleNameChange = ({ target: { value: name }}) => {
-    if(name === '') {
-      setBtnDisabled(true)
-      setNameMessage(null)
-    } else if(name.trim().length < 4) {
-      setBtnDisabled(true)
-      setNameMessage('Name 3 characters or more')
-    } else {
-      setBtnDisabled(false)
-      setNameMessage(null)
-    }
-    setName(name)
-  }
-
-  const handleEmailChange = ({ target: { value: email } }) => {
-    if(email === '') {
-      setBtnDisabled(true)
-      setEmailMessage('Please enter a valid email')
-    } else if(!isValidEmail.test(email)) {
-      setBtnDisabled(true)
-      setEmailMessage('Please enter a valid email')
-    } else {
-      setBtnDisabled(false)
-      setEmailMessage(null)
-    }
-    setEmail(email)
-} 
-
-  const handleCommentChange = (e) => {
-    setComment(e.target.value)
-  }
-
-  const handleFeedbackChange = (e) => {
-    setFeedback(e.target.value)
+  const onChange = (e) => {
+    setContactData({
+      [e.target.id]: e.target.value,
+    })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-  
-    if(name.trim().length > 3 && isValidEmail.test(email)) {
-      const newContact = {
-        name,
-        email,
-        comment,
-        feedback,
-      }
-      
-      console.log(newContact)
-      navigate('/')
-    }
+    console.log(contactData)
+    navigate('/')
+    
   }
   return (
     <div className='rounded-lg mt-12 mx-auto py-3 container flex bg-gray-500 text-white font-bold justify-center'>
@@ -73,28 +38,31 @@ function ContactForm() {
         <h2 className='text-xl font-bold'>Contact Us</h2>
         <div className='container rounded-lg flex flex-col m-2 p-2 shadow-xl bg-indigo-400 text-black ' >
           <input className='input' 
-            onChange={handleNameChange}
+            onChange={onChange}
             value={name}
             type='text' 
+            id='name'
             placeholder='Name' />
           {nameMessage && <div className=''>{nameMessage}</div>}
           <input className='input' 
-            onChange={handleEmailChange}
+            onChange={onChange}
             value={email}
-            type='text' 
+            type='email' 
+            id='email'
             placeholder='Email' />
             {emailMessage && <div className=''>{emailMessage}</div>}
           <input className='input'
-            onChange={handleCommentChange}
+            onChange={onChange}
             value={comment} 
-            type='text'   
+            type='text' 
+            id='comment'  
             placeholder='Comment (Optional)' />
           <input className='input' 
-          onChange={handleFeedbackChange}
+          onChange={onChange}
             value={feedback}
             type='text' 
+            id='feedback'
             placeholder='Feedback (Optional)' />
-          
           <Button type='submit' isDisabled={btnDisabled} />
         </div>
         

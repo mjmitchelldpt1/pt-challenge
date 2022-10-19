@@ -63,7 +63,7 @@ function ContactForm() {
             type='text' 
             id='feedback'
             placeholder='Feedback (Optional)' />
-          <Button type='submit' isDisabled={btnDisabled} />
+          <Button type='submit' text='Submit' isDisabled={btnDisabled} />
         </div>
         
       </form>

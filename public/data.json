@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "exercise": "Prone Press Up",
+    "category": "low back",
+    "repetitions": "10 reps 5 times per day"
+  },
+  {
+    "id": 2,
+    "exercise": "Chin Tuck",
+    "category": "neck",
+    "repetitions": "10 reps 5 times per day"
+  },{
+    "id": 3,
+    "exercise": "Thoracic Extension",
+    "category": "mid back",
+    "repetitions": "10 reps 5 times per day"
+  }
+]
+  

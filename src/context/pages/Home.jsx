@@ -1,10 +1,10 @@
-import React from 'react'
+import YoutubePlayer from "../../components/YoutubePlayer"
 
 function Home() {
   return (
-    <div className='main'>
-      <h1>30 Day PT Challenge</h1>
-    </div>
+    <>
+      <YoutubePlayer videoId="EbIx0dGY7B0"/>
+    </>
   )
 }
 

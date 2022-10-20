@@ -33,7 +33,7 @@
     }
 
     .main {
-        @apply container mx-auto px-3 pb-12;
+        @apply container bg-slate-400;
     }
     .button-primary {
         @apply p-2 m-2 bg-black text-white text-lg rounded-lg shadow-xl

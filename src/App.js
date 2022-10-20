@@ -18,7 +18,7 @@ function App() {
       <Navbar />
       <div id='FIXME' className='flex flex-row'>
         <SideBar />
-        <main className='flex-auto mx-auto'>
+        <main className='main'>
           <Routes>
             <Route
               path='/'

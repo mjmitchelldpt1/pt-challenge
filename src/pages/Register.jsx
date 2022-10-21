@@ -1,16 +1,18 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import {FaEye, FaEyeSlash, FaLock, FaEnvelope, FaCheck } from 'react-icons/fa'
-import Button from '../../components/Button'
+import {FaEye, FaEyeSlash, FaLock, FaEnvelope, FaCheck, FaUser } from 'react-icons/fa'
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { db } from '../firebase.config'
 
-function Login() {
+function Register() {
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
+    username: '',
     email: '',
-    password: ''
+    password: '',
   })
 
-  const {email, password} = formData
+  const { username, email, password} = formData
   const navigate = useNavigate()
 
   const onChange = (e) => {
@@ -24,16 +26,45 @@ function Login() {
     setShowPassword((prevState) => !prevState)
   }
 
-  const handleSubmit = (e) => {
-    e.prevent.default()
-    navigate('/')
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    
+    try {
+      const auth = getAuth()
+
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+
+      const user = userCredential.user
+
+      updateProfile(auth.currentUser, {
+        displayName: username,
+      })
+      
+      navigate('/')
+    } catch (error) {
+      alert(error)
+    }
   }
 
   return (
     <>
       <main className='container rounded-lg flex flex-col m-2 p-2 shadow-xl bg-indigo-400 text-black justify-center items-center'>
-        <h2>Welcome Back</h2>
-      <form action="" onSubmit={handleSubmit}>
+        <h2>Welcome</h2>
+      <form onSubmit={onSubmit}>
+        <div className='container flex flex-row justify-center items-center'>
+          <FaUser />
+          <input className='input mx-2'
+          onChange={onChange}
+          type="username"
+          value={username}
+          placeholder='Username'
+          id='username' />
+          <FaCheck />
+        </div>
         <div className='container flex flex-row justify-center items-center'>
           <FaEnvelope />
           <input className='input mx-2'
@@ -56,14 +87,17 @@ function Login() {
         </div>
         <Link to='/forgotpassword'>Forgot Password?</Link>
         <div className='container flex justify-center'>
-        <Button text={'Login'}/>
+          <button 
+            className='button-primary'>
+              Register
+          </button>
         </div>
       </form>
       {/* Google Oauth */}
-      <Link to='/register'>Register New User</Link>
+      <Link to='/login'>Already a member?</Link>
       </main>
     </>
   )
 }
 
-export default Login
+export default Register

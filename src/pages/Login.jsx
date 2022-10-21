@@ -1,17 +1,16 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import {FaEye, FaEyeSlash, FaLock, FaEnvelope, FaCheck, FaUser } from 'react-icons/fa'
-import Button from '../../components/Button'
+import {FaEye, FaEyeSlash, FaLock, FaEnvelope, FaCheck } from 'react-icons/fa'
+import Button from '../components/Button'
 
-function Register() {
+function Login() {
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
-    username: '',
     email: '',
     password: ''
   })
 
-  const { username, email, password} = formData
+  const {email, password} = formData
   const navigate = useNavigate()
 
   const onChange = (e) => {
@@ -26,25 +25,15 @@ function Register() {
   }
 
   const handleSubmit = (e) => {
-    e.prevent.default()
+    e.preventDefault()
     navigate('/')
   }
 
   return (
     <>
       <main className='container rounded-lg flex flex-col m-2 p-2 shadow-xl bg-indigo-400 text-black justify-center items-center'>
-        <h2>Welcome</h2>
+        <h2>Welcome Back</h2>
       <form action="" onSubmit={handleSubmit}>
-        <div className='container flex flex-row justify-center items-center'>
-          <FaUser />
-          <input className='input mx-2'
-          onChange={onChange}
-          type="username"
-          value={username}
-          placeholder='Username'
-          id='username' />
-          <FaCheck />
-        </div>
         <div className='container flex flex-row justify-center items-center'>
           <FaEnvelope />
           <input className='input mx-2'
@@ -67,14 +56,14 @@ function Register() {
         </div>
         <Link to='/forgotpassword'>Forgot Password?</Link>
         <div className='container flex justify-center'>
-        <Button text={'Register'}/>
+        <Button text={'Login'}/>
         </div>
       </form>
       {/* Google Oauth */}
-      <Link to='/login'>Already a member?</Link>
+      <Link to='/register'>Register New User</Link>
       </main>
     </>
   )
 }
 
-export default Register
+export default Login

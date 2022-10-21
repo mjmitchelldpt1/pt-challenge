@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './context/layout/Navbar';
-import Home from './context/pages/Home';
-import Contact from './context/pages/Contact';
-import About from './context/pages/About';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
+import About from './pages/About';
 import SideBar from './context/layout/SideBar';
-import Login from './context/pages/Login';
-import Timer from './context/pages/Timer';
-import Calendar from './context/pages/Calendar';
-import Workout from './context/pages/Workout';
-import Profile from './context/pages/Profile'
-import ForgotPassword from './context/pages/ForgotPassword'
-import Register from './context/pages/Register'
+import Login from './pages/Login';
+import Timer from './pages/Timer';
+import Calendar from './pages/Calendar';
+import Workout from './pages/Workout';
+import Profile from './pages/Profile'
+import ForgotPassword from './pages/ForgotPassword'
+import Register from './pages/Register'
 
 function App() {
   return (

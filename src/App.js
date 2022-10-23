@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Timer from './pages/Timer';
 import Calendar from './pages/Calendar';
 import Workout from './pages/Workout';
+import WorkoutLog from './pages/WorkoutLog';
 import Profile from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import Register from './pages/Register'
@@ -20,18 +21,12 @@ function App() {
         <SideBar />
         <main className='main'>
           <Routes>
-            <Route
-              path='/'
-              element={
-                <>
-                  <Home />
-                </>
-              }
-            />
+            <Route path='/' element={<Home />}/>
             <Route path='/about' element={<About />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/login' element={<Login />} />
             <Route path='/workout' element={<Workout />} />
+            <Route path='/workoutlog' element={<WorkoutLog />} />
             <Route path='/calendar' element={<Calendar />} />
             <Route path='/timer' element={<Timer />} />
             <Route path='/profile' element={<Profile />} />

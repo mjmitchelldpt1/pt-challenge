@@ -1,4 +1,4 @@
-import { FaHome, FaCalendarDay, FaDumbbell, FaClock  } from 'react-icons/fa'
+import { FaHome, FaCalendarDay, FaDumbbell, FaClock, FaBook  } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 
 function SideBar() {
@@ -17,6 +17,7 @@ function SideBar() {
 
       <Link to='/'><SideBarIcon text={'Home'} icon={ <FaHome size='32'/>}  /></Link>
       <Link to='/workout'><SideBarIcon text={'Workout'} icon={ <FaDumbbell size='32'/>} /></Link>
+      <Link to='/workoutlog'><SideBarIcon text={'Workout Log'} icon={ <FaBook size='32'/>} /></Link>
       <Link to='/calendar'><SideBarIcon text={'Calendar'} icon={<FaCalendarDay size='32'/>} /></Link>
       <Link to='/timer'><SideBarIcon text={'Timer'} icon={<FaClock size='32'/>} /></Link>
     </div>

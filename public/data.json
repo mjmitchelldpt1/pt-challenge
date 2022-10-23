@@ -1,20 +1,66 @@
 [
   {
     "id": 1,
-    "exercise": "Prone Press Up",
-    "category": "low back",
-    "repetitions": "10 reps 5 times per day"
+    "username": "Billy",
+    "workout": [
+      {
+        "exercise_performed": "prone press up",
+        "sets_performed" : 3,
+        "reps_performed": 10,
+        "total_reps_performed": 30     
+      },
+      {
+        "exercise_performed": "chin tuck",
+        "sets_performed" : 3,
+        "reps_performed": 5,
+        "total_reps_performed": 15     
+      },
+      {
+        "exercise_performed": "tricep kickback",
+        "sets_performed" : 3,
+        "reps_performed": 15,
+        "total_reps_performed": 45 
+      }]    
   },
   {
     "id": 2,
-    "exercise": "Chin Tuck",
-    "category": "neck",
-    "repetitions": "10 reps 5 times per day"
-  },{
+    "username": "Bowser",
+    "workout": [
+      {
+        "exercise_performed": "prone press up",
+        "sets_performed" : 30,
+        "reps_performed": 100,
+        "total_reps_performed": 3000     
+      },
+      {
+        "exercise_performed": "chin tuck",
+        "sets_performed" : 30,
+        "reps_performed": 50,
+        "total_reps_performed": 1500     
+      },
+      {
+        "exercise_performed": "tricep kickback",
+        "sets_performed" : 3,
+        "reps_performed": 18,
+        "total_reps_performed": 54 
+      }]    
+  },
+  {
     "id": 3,
-    "exercise": "Thoracic Extension",
-    "category": "mid back",
-    "repetitions": "10 reps 5 times per day"
+    "username": "Mark",
+    "workout": [
+      {
+        "exercise_performed": "biceps stretch",
+        "sets_performed" : 3,
+        "reps_performed": 1,
+        "total_reps_performed": 3     
+      },
+      {
+        "exercise_performed": "tricep kickback",
+        "sets_performed" : 3,
+        "reps_performed": 15,
+        "total_reps_performed": 45 
+      }]    
   }
 ]
   

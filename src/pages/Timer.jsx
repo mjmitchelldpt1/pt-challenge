@@ -32,7 +32,7 @@ function Timer() {
         } else {
           console.log('the ELSE')
         }
-    }, 1)
+    }, 1000)
   
     return () => {
       clearInterval(timeInterval)

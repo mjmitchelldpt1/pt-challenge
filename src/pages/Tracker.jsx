@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Card({children}) {
+function Tracker() {
   return (
     <div>
-      {children}
+Track my Data
     </div>
   )
 }
 
-export default Card
+export default Tracker

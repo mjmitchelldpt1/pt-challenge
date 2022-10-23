@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import ExerciseCard from "../components/ExerciseCard"
 
 function Workout() {
   const [workoutData, setWorkoutData] = useState([])
@@ -8,7 +9,7 @@ function Workout() {
   } , [])
 
   const fetchData = async () => {
-    const response = await fetch('/data.json'
+    const response = await fetch('/exerciseDB.json'
     ,{
       headers: {
         'Content-Type': 'application/json',
@@ -22,12 +23,7 @@ function Workout() {
   return (
     <div className="container flex flex-col bg-slate-400 text-lg text-white">
         {workoutData.map((item) => (
-        <div className="container flex my-3" 
-             key={item.id}>
-             Exercise: {item.exercise} <br />
-             Focus Area: {item.category} <br />
-             Repetitions: {item.repetitions} <br />
-        </div>
+        <ExerciseCard item={item} />
         ))}
     </div>
   )

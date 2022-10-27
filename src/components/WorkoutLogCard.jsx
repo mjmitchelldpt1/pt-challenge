@@ -1,16 +1,24 @@
-import React from 'react'
+import Button from "./Button";
+import ExerciseCard from "./ExerciseCard";
 
-function WorkoutLogCard({item}) {
+
+function WorkoutLogCard({ item, onSubmit }) {
+  
+  
   return (
-    <div className="container flex my-3" 
-             key={item.id}>
-             UserName: {item.username} <br />
-             Exercise Performed: {item.workout.exercise_performed} <br />
-             Sets: {item.workout.sets_performed} <br />
-             Repetitions: {item.workout.reps_performed} <br />
-             Total Reps: {item.workout.total_reps_performed} <br />
+    <div className='container flex flex-col my-3 ml-3  bg-cyan-400 rounded-md shadow-lg  ' key={item.id}>
+      <div className='container px-3'>
+        Username: {item.username}
+      </div>
+      <div className='container px-3'>
+      {item.workout.map((exercises) => (
+        <ExerciseCard key={exercises.exercise} exercises={exercises}>
+          
+        </ExerciseCard>
+      ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default WorkoutLogCard
+export default WorkoutLogCard;

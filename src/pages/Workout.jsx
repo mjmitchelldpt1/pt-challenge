@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import ExerciseCard from "../components/ExerciseCard"
 
 function Workout() {
   const [workoutData, setWorkoutData] = useState([])
@@ -22,9 +21,7 @@ function Workout() {
   
   return (
     <div className="container flex flex-col bg-slate-400 text-lg text-white">
-        {workoutData.map((item) => (
-        <ExerciseCard item={item} />
-        ))}
+       workout plan
     </div>
   )
 }

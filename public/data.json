@@ -4,19 +4,19 @@
     "username": "Billy",
     "workout": [
       {
-        "exercise_performed": "prone press up",
+        "exercise": "prone press up",
         "sets_performed" : 3,
         "reps_performed": 10,
         "total_reps_performed": 30     
       },
       {
-        "exercise_performed": "chin tuck",
+        "exercise": "chin tuck",
         "sets_performed" : 3,
         "reps_performed": 5,
         "total_reps_performed": 15     
       },
       {
-        "exercise_performed": "tricep kickback",
+        "exercise": "tricep kickback",
         "sets_performed" : 3,
         "reps_performed": 15,
         "total_reps_performed": 45 
@@ -27,19 +27,19 @@
     "username": "Bowser",
     "workout": [
       {
-        "exercise_performed": "prone press up",
+        "exercise": "prone press up",
         "sets_performed" : 30,
         "reps_performed": 100,
         "total_reps_performed": 3000     
       },
       {
-        "exercise_performed": "chin tuck",
+        "exercise": "chin tuck",
         "sets_performed" : 30,
         "reps_performed": 50,
         "total_reps_performed": 1500     
       },
       {
-        "exercise_performed": "tricep kickback",
+        "exercise": "tricep kickback",
         "sets_performed" : 3,
         "reps_performed": 18,
         "total_reps_performed": 54 
@@ -50,13 +50,13 @@
     "username": "Mark",
     "workout": [
       {
-        "exercise_performed": "biceps stretch",
+        "exercise": "biceps stretch",
         "sets_performed" : 3,
         "reps_performed": 1,
         "total_reps_performed": 3     
       },
       {
-        "exercise_performed": "tricep kickback",
+        "exercise": "tricep kickback",
         "sets_performed" : 3,
         "reps_performed": 15,
         "total_reps_performed": 45 

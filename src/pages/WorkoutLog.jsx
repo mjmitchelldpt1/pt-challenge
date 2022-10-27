@@ -3,6 +3,18 @@ import { useEffect, useState} from 'react'
 function WorkoutLog() {
   const [workoutLogData, setWorkoutLogData] = useState([])
 
+  const editWorkoutLog = () => {
+    // build me later 
+  }
+
+  const deleteWorkoutLog = () => {
+    // don't delete me 
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+  }
+  
   useEffect(() => {
     fetchData()
   }, [])
@@ -21,9 +33,10 @@ function WorkoutLog() {
   return (
     <div className="container flex flex-col bg-slate-400 text-lg text-white">
       {workoutLogData.map((item) => (
-        <WorkoutLogCard item={item}/>
+        <WorkoutLogCard key={item.id} item={item}/>
       ))}
     </div>
+    
   )
 }
 

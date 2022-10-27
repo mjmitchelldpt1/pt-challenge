@@ -10,7 +10,7 @@ function WorkoutLogCard({ item, onSubmit }) {
       <div className='container px-3'>
         Username: {item.username}
       </div>
-      <div className='container px-3'>
+      <div className='container flex px-3'>
       {item.workout.map((exercises) => (
         <ExerciseCard key={exercises.exercise} exercises={exercises}>
           

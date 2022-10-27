@@ -18,8 +18,8 @@ function ExerciseCard({ exercises }) {
 
  
   return (
-    <div className="container flex my-3 flex-col bg-red-300">
-      {exercises.exercise} <br />
+    <div className="container flex p-3 m-3 flex-col bg-red-300 rounded-2xl shadow-xl justify-center items-center w-auto">
+      <p>{exercises.exercise}</p>
           Sets: {exercises.sets_performed} 
           <input className='input w-24 mx-2 text-gray-400'
           onChange={onChange}
@@ -32,7 +32,7 @@ function ExerciseCard({ exercises }) {
           onChange={onChange}
           type="number"
           value={reps}
-          placeholder='Repetitions'
+          placeholder='Reps'
           id='reps' />
     </div>
   )

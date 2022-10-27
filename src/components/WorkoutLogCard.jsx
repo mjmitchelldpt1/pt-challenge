@@ -2,15 +2,13 @@ import Button from "./Button";
 import ExerciseCard from "./ExerciseCard";
 
 
-function WorkoutLogCard({ item, onSubmit }) {
+function WorkoutLogCard({ item }) {
   
   
   return (
-    <div className='container flex flex-col my-3 ml-3  bg-cyan-400 rounded-md shadow-lg  ' key={item.id}>
-      <div className='container px-3'>
-        Username: {item.username}
-      </div>
-      <div className='container flex px-3'>
+    <div className='container my-3 ml-3 mr-auto bg-cyan-400 rounded-lg shadow-lg w-auto' key={item.id}>
+      <p className="ml-3 mt-2 font-bold text-xl">{item.username}'s Daily Workout</p> 
+      <div className='container flex w-auto px-3'>
       {item.workout.map((exercises) => (
         <ExerciseCard key={exercises.exercise} exercises={exercises}>
           

@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "exercise": "Prone Press Up",
+      "category": "low back",
+      "recommended_reps": 10,
+      "recommended_sets": 3,
+      "exercise_description": "get on your belly and press",
+      "exercise_image": "picture this",
+      "exercise_video": "video me"
+    },
+    {
+      "id": 2,
+      "exercise": "Chin Tuck",
+      "category": "neck",
+      "recommended_reps": 10,
+      "recommended_sets": 3,
+      "exercise_description": "and tuck, and tuck, and tuck",
+      "exercise_image": "picture this",
+      "exercise_video": "video me"
+    },{
+      "id": 3,
+      "exercise": "Thoracic Extension",
+      "category": "mid back",
+      "recommended_reps": 10,
+      "recommended_sets": 3,
+      "exercise_description": "and reach, and reach, and reach for the sky",
+      "exercise_image": "picture this",
+      "exercise_video": "video me"
+    }
+  ]
+    
+

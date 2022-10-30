@@ -10,9 +10,10 @@ function WorkoutLogCard({ item }) {
       <p className="ml-3 mt-2 font-bold text-xl">{item.username}'s Daily Workout</p> 
       <div className='container flex w-auto px-3'>
       {item.workout.map((exercises) => (
-        <ExerciseCard key={exercises.exercise} exercises={exercises}>
-          
-        </ExerciseCard>
+        <ExerciseCard 
+          key={exercises.exercise_id} 
+          exercises={exercises}
+          username={item.username}/>
       ))}
       </div>
     </div>

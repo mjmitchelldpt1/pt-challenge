@@ -16,7 +16,11 @@ function WorkoutLog() {
   }
   
   useEffect(() => {
+    try {
     fetchData()
+    } catch(error) {
+      console.log(error)
+    }
   }, [])
 
   const fetchData = async () => {

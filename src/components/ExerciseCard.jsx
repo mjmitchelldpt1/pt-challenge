@@ -47,14 +47,14 @@ function ExerciseCard({ exercises, username }) {
           <input className='input w-24 mx-2 text-gray-400'
           onChange={onChange}
           type="number"
-          value={rounds}
+          value={rounds || ''}
           placeholder='Sets'
           id='rounds' />
           Reps: {exercises.reps_performed}
           <input className='input w-24 mx-2 text-gray-400'
           onChange={onChange}
           type="number"
-          value={reps}
+          value={reps || ''}
           placeholder='Reps'
           id='reps' />
           {isCheckEnabled && <button onClick={completeExercise}><FaCheck className='font-extrabold hover:scale-125'/></button>}

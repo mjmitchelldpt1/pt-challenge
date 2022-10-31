@@ -42,7 +42,7 @@ function ExerciseCard({ exercises, username }) {
  
   return (
     <div className={`container flex p-3 m-3 flex-col rounded-2xl shadow-xl justify-center items-center w-auto ${isExerciseComplete ? 'bg-green-400 transition-colors duration-500': 'bg-orange-400 transition-colors duration-500'}`}>
-      <p>{exercises.exercise_id}</p>
+      <p>{exercises.exercise_id}tester</p>
           Sets: {exercises.sets_performed} 
           <input className='input w-24 mx-2 text-gray-400'
           onChange={onChange}

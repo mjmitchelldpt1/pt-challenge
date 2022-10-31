@@ -19,6 +19,7 @@ function WorkoutLog() {
     try {
     const response = await fetch('data.json'
     ,{
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -27,7 +28,7 @@ function WorkoutLog() {
     const data = await response.json()
     setWorkoutLogData(data)
   } catch(error) {
-    console.log(error)
+    console.log('anything')
   }
   }
 

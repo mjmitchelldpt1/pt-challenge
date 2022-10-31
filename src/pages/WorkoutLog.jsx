@@ -16,14 +16,11 @@ function WorkoutLog() {
   }
   
   useEffect(() => {
-    try {
     fetchData()
-    } catch(error) {
-      console.log(error)
-    }
   }, [])
 
   const fetchData = async () => {
+    try {
     const response = await fetch('/data.json'
     ,{
       headers: {
@@ -33,6 +30,9 @@ function WorkoutLog() {
     })
     const data = await response.json()
     setWorkoutLogData(data)
+  } catch(error) {
+    console.log(error)
+  }
   }
   return (
     <div className="container flex flex-col bg-slate-400 text-lg text-white">

@@ -14,10 +14,6 @@ function WorkoutLog() {
   const onSubmit = (e) => {
     e.preventDefault()
   }
-  
-  useEffect(() => {
-    fetchData()
-  }, [])
 
   const fetchData = async () => {
     try {
@@ -34,6 +30,10 @@ function WorkoutLog() {
     console.log(error)
   }
   }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
   return (
     <div className="container flex flex-col bg-slate-400 text-lg text-white">
       {workoutLogData.map((item) => (

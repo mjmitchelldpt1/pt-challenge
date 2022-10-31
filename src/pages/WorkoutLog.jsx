@@ -21,7 +21,7 @@ function WorkoutLog() {
 
   const fetchData = async () => {
     try {
-    const response = await fetch('/data.json'
+    const response = await fetch('data.json'
     ,{
       headers: {
         'Content-Type': 'application/json',

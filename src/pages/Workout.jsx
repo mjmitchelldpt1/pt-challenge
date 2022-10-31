@@ -8,7 +8,7 @@ function Workout() {
   } , [])
 
   const fetchData = async () => {
-    const response = await fetch('/exerciseDB.json'
+    const response = await fetch('/pt-challenge/data.json'
     ,{
       headers: {
         'Content-Type': 'application/json',
@@ -18,10 +18,11 @@ function Workout() {
     const data = await response.json()
     setWorkoutData(data)
   }
+  console.log(workoutData)
   
   return (
     <div className="container flex flex-col bg-slate-400 text-lg text-white">
-       workout plan
+       data
     </div>
   )
 }

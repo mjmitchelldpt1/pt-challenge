@@ -1,5 +1,6 @@
 import WorkoutLogCard from "../components/WorkoutLogCard"
-import { useEffect, useState} from 'react'
+import { useEffect, useState} from 'react'  
+
 function WorkoutLog() {
   const [workoutLogData, setWorkoutLogData] = useState([])
 
@@ -17,7 +18,7 @@ function WorkoutLog() {
 
   const fetchData = async () => {
     try {
-    const response = await fetch('pt-challenge/data.json'
+    const response = await fetch('TEST.json'
     ,{
       headers: {
         'Content-Type': 'application/json',

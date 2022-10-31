@@ -19,14 +19,13 @@ function WorkoutLog() {
     try {
     const response = await fetch('data.json'
     ,{
-      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
     })
-    const data = await response.json()
-    setWorkoutLogData(data)
+    console.log(response)
+    return response
   } catch(error) {
     console.log('anything')
   }

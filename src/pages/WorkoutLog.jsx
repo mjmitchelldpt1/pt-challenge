@@ -17,17 +17,17 @@ function WorkoutLog() {
 
   const fetchData = async () => {
     try {
-    const response = await fetch('data.json'
+    const response = await fetch('/pt-challenge/data.json'
     ,{
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
     })
-    console.log(response)
-    return response
+    const data = await response.json()
+    setWorkoutLogData(data)
   } catch(error) {
-    console.log('anything')
+    console.log(error)
   }
   }
 

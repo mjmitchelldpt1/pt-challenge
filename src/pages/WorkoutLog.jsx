@@ -37,7 +37,6 @@ function WorkoutLog() {
   }, [])
   return (
     <div className="container flex flex-col bg-slate-400 text-lg text-white">
-      <p>tester</p>
       {workoutLogData.map((item) => (
         <WorkoutLogCard key={item.id} item={item}/>
       ))}

@@ -18,7 +18,7 @@ function WorkoutLog() {
 
   const fetchData = async () => {
     try {
-    const response = await fetch('/pt-challenge/data.json'
+    const response = await fetch('/data.json'
     ,{
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +37,6 @@ function WorkoutLog() {
   }, [])
   return (
     <div className="container flex flex-col bg-slate-400 text-lg text-white">
-      <p>tester</p>
       {workoutLogData.map((item) => (
         <WorkoutLogCard key={item.id} item={item}/>
       ))}

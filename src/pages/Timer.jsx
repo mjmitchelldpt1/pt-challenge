@@ -55,7 +55,6 @@ function Timer() {
         {isTimerActive ? <button className='button-primary' onClick={() => setIsTimerActive(false)}>Stop</button> :
         <button className='button-primary' onClick={() => setIsTimerActive(true)}>Start</button>}
         <button className='button-primary' onClick={handleResetTimer}>Reset</button>
-        <div>test</div>
       </div>
       
     </main>

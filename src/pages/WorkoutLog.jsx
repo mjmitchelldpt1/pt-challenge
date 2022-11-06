@@ -43,7 +43,7 @@ function WorkoutLog() {
   useEffect(() => {
     fetchData()
   }, [setWorkoutLogData])
-
+console.log('testing production branch')
   return (
   <>
     {hasError && <Error/>}

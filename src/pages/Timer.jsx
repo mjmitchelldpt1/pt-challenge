@@ -13,7 +13,7 @@ function Timer() {
  
   useEffect(() => {
     let interval = setInterval(() => {
-      if(isTimerActive) {
+      if(isTimerActive && secondsLeft > 0) {
       setSecondsLeft(prevTime => prevTime -1)
       } else if (!isTimerActive) {
         clearInterval(interval)
@@ -24,7 +24,7 @@ function Timer() {
       console.log('Cleanup')
       clearInterval(interval)
     }
-  }, [isTimerActive])
+  }, [isTimerActive, secondsLeft])
 
   
 

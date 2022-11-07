@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './context/layout/Navbar';
+import Navbar from './layout/Navbar';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import About from './pages/About';
-import SideBar from './context/layout/SideBar';
+import SideBar from './layout/SideBar';
 import Login from './pages/Login';
 import Timer from './pages/Timer';
 import Calendar from './pages/Calendar';

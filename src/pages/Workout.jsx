@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react"
+import Error from "../components/Error"
 
 function Workout() {
   const [workoutData, setWorkoutData] = useState([])
+  const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
     fetchData()
   } , [])
 
   const fetchData = async () => {
-    const response = await fetch('/pt-challenge/data.json'
+   
+    try {
+    const response = await fetch('/error.json'
     ,{
       headers: {
         'Content-Type': 'application/json',
@@ -16,14 +20,21 @@ function Workout() {
       }
     })
     const data = await response.json()
-    setWorkoutData(data)
+    
+  } catch(error) {
+    console.log(error)
+    setHasError(true)
   }
-  console.log(workoutData)
+  }
+
   
   return (
+    <>
+    {hasError ? <Error /> :
     <div className="container flex flex-col bg-slate-400 text-lg text-white">
        data
-    </div>
+    </div>}
+    </>
   )
 }
 

@@ -1,14 +1,30 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState} from 'react'  
+import WorkoutLogCard from "../components/WorkoutLogCard"
+import Loading from "../components/Loading"
+import Error from '../components/Error'
 
 function Workout() {
-  const [workoutData, setWorkoutData] = useState([])
+  const [workoutLogData, setWorkoutLogData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [hasError, setHasError] = useState(false)
 
-  useEffect(() => {
-    fetchData()
-  } , [])
+  const editWorkoutLog = () => {
+    // build me later 
+  }
+
+  const deleteWorkoutLog = () => {
+    // don't delete me 
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+  }
 
   const fetchData = async () => {
-    const response = await fetch('/pt-challenge/data.json'
+    setIsLoading(true)
+    setHasError(false)
+    try {
+    const response = await fetch('/data.json'
     ,{
       headers: {
         'Content-Type': 'application/json',
@@ -16,14 +32,28 @@ function Workout() {
       }
     })
     const data = await response.json()
-    setWorkoutData(data)
+    setWorkoutLogData(data)
+    setIsLoading(false)
+  } catch(error) {
+    console.log(error)
+    setHasError(true)
   }
-  console.log(workoutData)
-  
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [setWorkoutLogData])
+
   return (
+  <>
+    {hasError && <Error/>}
+    {isLoading ? (<Loading/> ): (
     <div className="container flex flex-col bg-slate-400 text-lg text-white">
-       data
-    </div>
+      {workoutLogData.map((item) => (
+        <WorkoutLogCard key={item.id} item={item}/>
+      ))}
+    </div> )}
+  </>
   )
 }
 

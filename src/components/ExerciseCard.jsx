@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { FaCheck } from "react-icons/fa"
 
 function ExerciseCard({ exercises, username }) {

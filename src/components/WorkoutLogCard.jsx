@@ -1,6 +1,6 @@
 import Button from "./Button";
 import ExerciseCard from "./ExerciseCard";
-
+import ExerciseAccordion from "./ExerciseAccordion";
 
 function WorkoutLogCard({ item }) {
   

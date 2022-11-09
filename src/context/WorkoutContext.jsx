@@ -1,8 +1,8 @@
 import { useState, createContext, useEffect } from "react";
 
-const WorkoutLogContext = createContext()
+const WorkoutContext = createContext()
 
-export const WorkoutLogProvider = ({ children }) => {
+export const WorkoutProvider = ({ children }) => {
 
   const [workoutLogData, setWorkoutLogData] = useState([])
   const [repTracker, setRepTracker] = useState({
@@ -47,13 +47,8 @@ export const WorkoutLogProvider = ({ children }) => {
     setWorkoutLogData(data)
   }
 
-  
-
-
-
-
   return (
-    <WorkoutLogContext.Provider
+    <WorkoutContext.Provider
       value={{
         workoutLogData,
         repTracker,
@@ -64,8 +59,8 @@ export const WorkoutLogProvider = ({ children }) => {
       }}
       >
         {children}
-      </WorkoutLogContext.Provider>
+      </WorkoutContext.Provider>
   )
 }
 
-export default WorkoutLogContext
+export default WorkoutContext

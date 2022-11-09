@@ -46,8 +46,6 @@ function Timer() {
         <button className='button-primary' onClick={() => setIsTimerActive(true)}>Start</button>}
         <button className='button-primary' onClick={handleResetTimer}>Reset</button>
       </div>
-      <div>{} </div>
-      
     </main>
   )
 }

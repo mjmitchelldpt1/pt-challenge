@@ -11,15 +11,8 @@ function WorkoutLog() {
     user_id: 'user_id',
     workout: [],
   })
-  const [newExercise, setNewExercise] = useState({
-   exercise_id: '',
-   sets_performed: 0,
-   reps_performed: 0
-  })
-
-  const {exercise_id} = newExercise
+  const [newExerciseName, setNewExerciseName] = useState('')
   const [isCheckEnabled, setIsCheckEnabled] = useState(false)
-  const [isExerciseComplete, setIsExerciseComplete] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [hasError, setHasError] = useState(false)
  
@@ -53,16 +46,31 @@ function WorkoutLog() {
   }
 
   const onChange = (e) => {
-    setNewExercise((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.event,
-    }))
+    setNewExerciseName(e.target.value)
+    if (newExerciseName.trim().length > 3) {
+      setIsCheckEnabled(true)
+    }
   }
 
-  const addNewExercise = (newExercise) => {
-    console.log('new exercise')
-  }
+  const createNewExercise = () => {
+    if (isCheckEnabled) {
+      let exerciseObj = {
+        exercise_id: newExerciseName,
+        reps_performed: 0,
+        sets_performed: 0, 
+      }
+      addNewExercise(exerciseObj)
+    }
     
+  }
+
+  const addNewExercise = (exerciseObj) => {
+    setWorkoutData({
+      ...workoutData,
+      user_id: 'user_id',
+      workout: [...workoutData.workout.filter((item) => item.exercise_id !== exerciseObj.exercise_id), exerciseObj]
+    })
+  }
   return (
   <div>
     <WorkoutLogCard key={userData.user_id} username={userData.username}>
@@ -73,10 +81,10 @@ function WorkoutLog() {
       <input className='input w-24 mx-2 text-gray-400'
           onChange={onChange}
           type="text"
-          value={exercise_id}
+          value={newExerciseName}
           placeholder='Add New Exercise'
           id='exercise_id' />
-          {isCheckEnabled && <button onClick={addNewExercise}><FaCheck className='font-extrabold hover:scale-125'/></button>}
+          {isCheckEnabled && <button onClick={createNewExercise}><FaCheck className='font-extrabold hover:scale-125'/></button>}
       </div>
     </WorkoutLogCard>
     

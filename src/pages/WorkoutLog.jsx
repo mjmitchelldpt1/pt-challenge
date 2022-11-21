@@ -2,38 +2,37 @@ import { useEffect, useState} from 'react'
 import WorkoutLogCard from "../components/WorkoutLogCard"
 import Loading from "../components/Loading"
 import Error from '../components/Error'
+import ExerciseCard from '../components/ExerciseCard'
+import { FaCheck } from "react-icons/fa"
 
 function WorkoutLog() {
-  const [workoutLogData, setWorkoutLogData] = useState([])
+  const [userData, setUserData] = useState({})
+  const [workoutData, setWorkoutData] = useState({
+    user_id: 'user_id',
+    workout: [],
+  })
+  const [newExercise, setNewExercise] = useState({
+   exercise_id: '',
+   sets_performed: 0,
+   reps_performed: 0
+  })
+
+  const {exercise_id} = newExercise
+  const [isCheckEnabled, setIsCheckEnabled] = useState(false)
+  const [isExerciseComplete, setIsExerciseComplete] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [hasError, setHasError] = useState(false)
-
-  const editWorkoutLog = () => {
-    // build me later 
-  }
-
-  const deleteWorkoutLog = () => {
-    // don't delete me 
-  }
-
-  const onSubmit = (e) => {
-    e.preventDefault()
-  }
-
+ 
+  
   const fetchData = async () => {
     setIsLoading(true)
     setHasError(false)
     try {
-    const response = await fetch('/data.json'
-    ,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-    const data = await response.json()
-    setWorkoutLogData(data)
     setIsLoading(false)
+    
+    setUserData(JSON.parse(localStorage.getItem('userData')))
+    setWorkoutData(JSON.parse(localStorage.getItem('workoutData')))
+  
   } catch(error) {
     console.log(error)
     setHasError(true)
@@ -42,18 +41,46 @@ function WorkoutLog() {
 
   useEffect(() => {
     fetchData()
-  }, [setWorkoutLogData])
+  }, [setWorkoutData, setUserData])
 
+  const updateWorkoutState = (updateExercise) => {
+    setWorkoutData({
+      ...workoutData,
+      user_id: 'user_id',
+      workout: [updateExercise, ...workoutData.workout.filter((item) => item.exercise_id !== updateExercise.exercise_id)]
+    })
+    localStorage.setItem('newData', JSON.stringify(workoutData))
+  }
+
+  const onChange = (e) => {
+    setNewExercise((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.event,
+    }))
+  }
+
+  const addNewExercise = (newExercise) => {
+    console.log('new exercise')
+  }
+    
   return (
-  <>
-    {hasError && <Error/>}
-    {isLoading ? (<Loading/> ): (
-    <div className="container flex flex-col bg-slate-400 text-lg text-white">
-      {workoutLogData.map((item) => (
-        <WorkoutLogCard key={item.id} item={item}/>
+  <div>
+    <WorkoutLogCard key={userData.user_id} username={userData.username}>
+    {workoutData.workout.map((exercises) => (
+        <ExerciseCard key={exercises.exercise_id} exercises={exercises} workoutData={workoutData} updateWorkoutState={updateWorkoutState}/>
       ))}
-    </div> )}
-  </>
+      <div className="container flex p-3 m-3 flex-col rounded-2xl shadow-xl justify-center items-center w-auto">
+      <input className='input w-24 mx-2 text-gray-400'
+          onChange={onChange}
+          type="text"
+          value={exercise_id}
+          placeholder='Add New Exercise'
+          id='exercise_id' />
+          {isCheckEnabled && <button onClick={addNewExercise}><FaCheck className='font-extrabold hover:scale-125'/></button>}
+      </div>
+    </WorkoutLogCard>
+    
+  </div>
   )
 }
 

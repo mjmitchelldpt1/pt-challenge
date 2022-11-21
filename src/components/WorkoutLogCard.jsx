@@ -2,19 +2,14 @@ import Button from "./Button";
 import ExerciseCard from "./ExerciseCard";
 import ExerciseAccordion from "./ExerciseAccordion";
 
-function WorkoutLogCard({ item }) {
+function WorkoutLogCard({ children, username}) {
   
   
   return (
-    <div className='container my-3 ml-3 mr-auto bg-cyan-400 rounded-lg shadow-lg w-auto' key={item.id}>
-      <p className="ml-3 mt-2 font-bold text-xl">{item.username}'s Daily Workout</p> 
+    <div className='container my-3 ml-3 mr-auto bg-cyan-400 rounded-lg shadow-lg w-auto'>
+      <p className="ml-3 mt-2 font-bold text-xl">{username}'s Daily Workout</p> 
       <div className='container flex w-auto px-3'>
-      {item.workout.map((exercises) => (
-        <ExerciseCard 
-          key={exercises.exercise_id} 
-          exercises={exercises}
-          username={item.username}/>
-      ))}
+         {children}
       </div>
     </div>
   );

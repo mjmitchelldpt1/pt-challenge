@@ -3,30 +3,24 @@ import { useState, createContext, useEffect } from "react";
 const WorkoutContext = createContext()
 
 export const WorkoutProvider = ({ children }) => {
-
-  const [workoutLogData, setWorkoutLogData] = useState([])
   const [repTracker, setRepTracker] = useState({
-    exercise: '',
-    reps: '',
-    rounds: ''
+    userId:  workoutData.user_id,
+    exerciseName: exercises.exercise_id,
+    reps: 0,
+    rounds: 0
   })
 
-  const {exercise, reps, rounds} = repTracker
-
-  const editWorkoutLog = () => {
-    // build me later 
-  }
-
-  const deleteWorkoutLog = () => {
-    // don't delete me 
-  }
-
   const onChange = (e) => {
+
     setRepTracker((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value
     }))
-  }
+    if(reps >= 0 && rounds >= 0 ) {
+    setIsCheckEnabled(true) 
+  }  else {
+    setIsCheckEnabled(false)
+  }}
 
   const onSubmit = (e) => {
     e.preventDefault()

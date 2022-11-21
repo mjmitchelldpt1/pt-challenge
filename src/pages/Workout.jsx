@@ -3,6 +3,7 @@ import WorkoutLogCard from "../components/WorkoutLogCard"
 import Loading from "../components/Loading"
 import Error from '../components/Error'
 
+
 function Workout() {
   const [workoutLogData, setWorkoutLogData] = useState([])
   const [isLoading, setIsLoading] = useState(false)

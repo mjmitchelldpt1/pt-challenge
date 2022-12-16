@@ -58,33 +58,40 @@ function WorkoutLog() {
     });
   };
   return (
-    <div>
-      <WorkoutLogCard key={userData.user_id} username={userData.username}>
-        {workoutData.workout.map((exercises) => (
-          <ExerciseCard
-            key={exercises.exercise_id}
-            exercises={exercises}
-            workoutData={workoutData}
-            updateWorkoutState={updateWorkoutState}
-          />
-        ))}
-        <div className="container flex p-3 m-3 flex-col rounded-2xl shadow-xl justify-center items-center w-auto">
-          <input
-            className="input w-24 mx-2 text-gray-400"
-            onChange={onChange}
-            type="text"
-            value={newExerciseName}
-            placeholder="Add New Exercise"
-            id="exercise_id"
-          />
-          {isCheckEnabled && (
-            <button onClick={createNewExercise}>
-              <FaCheck className="font-extrabold hover:scale-125" />
-            </button>
-          )}
+    <>
+      {hasError && <Error />}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div>
+          <WorkoutLogCard key={userData.user_id} username={userData.username}>
+            {workoutData.workout.map((exercises) => (
+              <ExerciseCard
+                key={exercises.exercise_id}
+                exercises={exercises}
+                workoutData={workoutData}
+                updateWorkoutState={updateWorkoutState}
+              />
+            ))}
+            <div className="container flex p-3 m-3 flex-col rounded-2xl shadow-xl justify-center items-center w-auto">
+              <input
+                className="input w-24 mx-2 text-gray-400"
+                onChange={onChange}
+                type="text"
+                value={newExerciseName}
+                placeholder="Add New Exercise"
+                id="exercise_id"
+              />
+              {isCheckEnabled && (
+                <button onClick={createNewExercise}>
+                  <FaCheck className="font-extrabold hover:scale-125" />
+                </button>
+              )}
+            </div>
+          </WorkoutLogCard>
         </div>
-      </WorkoutLogCard>
-    </div>
+      )}
+    </>
   );
 }
 

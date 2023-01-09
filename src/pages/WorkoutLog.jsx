@@ -1,60 +1,98 @@
-import { useEffect, useState} from 'react'  
-import WorkoutLogCard from "../components/WorkoutLogCard"
-import Loading from "../components/Loading"
-import Error from '../components/Error'
+import { useState } from "react";
+import WorkoutLogCard from "../components/WorkoutLogCard";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
+import ExerciseCard from "../components/ExerciseCard";
+import { FaCheck } from "react-icons/fa";
+import useWorkoutData from "../hooks/useWorkoutData";
+import useUserData from "../hooks/useUserData";
 
 function WorkoutLog() {
-  const [workoutLogData, setWorkoutLogData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [hasError, setHasError] = useState(false)
+  const { workoutData, setWorkoutData, isLoading, hasError } = useWorkoutData();
+  const { userData } = useUserData();
+  const [newExerciseName, setNewExerciseName] = useState("");
+  const [isCheckEnabled, setIsCheckEnabled] = useState(false);
 
-  const editWorkoutLog = () => {
-    // build me later 
-  }
+  const updateWorkoutState = (updateExercise) => {
+    setWorkoutData({
+      ...workoutData,
+      user_id: "user_id",
+      workout: [
+        updateExercise,
+        ...workoutData.workout.filter(
+          (item) => item.exercise_id !== updateExercise.exercise_id
+        ),
+      ],
+    });
+    localStorage.setItem("newData", JSON.stringify(workoutData));
+  };
 
-  const deleteWorkoutLog = () => {
-    // don't delete me 
-  }
+  const onChange = (e) => {
+    setNewExerciseName(e.target.value);
+    if (newExerciseName.trim().length > 3) {
+      setIsCheckEnabled(true);
+    }
+  };
 
-  const onSubmit = (e) => {
-    e.preventDefault()
-  }
+  const createNewExercise = () => {
+    if (isCheckEnabled) {
+      let exerciseObj = {
+        exercise_id: newExerciseName,
+        reps_performed: 0,
+        sets_performed: 0,
+      };
+      addNewExercise(exerciseObj);
+    }
+  };
 
-  const fetchData = async () => {
-    setIsLoading(true)
-    setHasError(false)
-    try {
-    const response = await fetch('/data.json'
-    ,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-    const data = await response.json()
-    setWorkoutLogData(data)
-    setIsLoading(false)
-  } catch(error) {
-    console.log(error)
-    setHasError(true)
-  }
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [setWorkoutLogData])
-
+  const addNewExercise = (exerciseObj) => {
+    setWorkoutData({
+      ...workoutData,
+      user_id: "user_id",
+      workout: [
+        ...workoutData.workout.filter(
+          (item) => item.exercise_id !== exerciseObj.exercise_id
+        ),
+        exerciseObj,
+      ],
+    });
+  };
   return (
-  <>
-    {hasError && <Error/>}
-    {isLoading ? (<Loading/> ): (
-    <div className="container flex flex-col bg-slate-400 text-lg text-white">
-      {workoutLogData.map((item) => (
-        <WorkoutLogCard key={item.id} item={item}/>
-      ))}
-    </div> )}
-  </>
-  )
+    <>
+      {hasError && <Error />}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div>
+          <WorkoutLogCard key={userData.user_id} username={userData.username}>
+            {workoutData.workout.map((exercises) => (
+              <ExerciseCard
+                key={exercises.exercise_id}
+                exercises={exercises}
+                workoutData={workoutData}
+                updateWorkoutState={updateWorkoutState}
+              />
+            ))}
+            <div className="container flex p-3 m-3 flex-col rounded-2xl shadow-xl justify-center items-center w-auto">
+              <input
+                className="input w-24 mx-2 text-gray-400"
+                onChange={onChange}
+                type="text"
+                value={newExerciseName}
+                placeholder="Add New Exercise"
+                id="exercise_id"
+              />
+              {isCheckEnabled && (
+                <button onClick={createNewExercise}>
+                  <FaCheck className="font-extrabold hover:scale-125" />
+                </button>
+              )}
+            </div>
+          </WorkoutLogCard>
+        </div>
+      )}
+    </>
+  );
 }
 
-export default WorkoutLog
+export default WorkoutLog;

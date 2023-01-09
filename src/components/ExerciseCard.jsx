@@ -1,23 +1,25 @@
 import { useState } from "react"
 import { FaCheck } from "react-icons/fa"
 
-function ExerciseCard({ exercises, username }) {
+function ExerciseCard({ exercises, workoutData, updateWorkoutState }) {
   const [isCheckEnabled, setIsCheckEnabled] = useState(false)
   const [isExerciseComplete, setIsExerciseComplete] = useState(false)
   const [repTracker, setRepTracker] = useState({
-    reps: localStorage.getItem("reps_performed"),
-    rounds: localStorage.getItem("sets_performed")
+    exercise_id: exercises.exercise_id,
+    reps_performed: 0,
+    sets_performed: 0
   })
+ 
   
-  const {reps, rounds} = repTracker
-
+  const {exercise_id, reps_performed, sets_performed} = repTracker
+  
   const onChange = (e) => {
 
     setRepTracker((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value
     }))
-    if(reps >= 0 && rounds >= 0 ) {
+    if(reps_performed >= 0 && sets_performed >= 0 ) {
     setIsCheckEnabled(true) 
   }  else {
     setIsCheckEnabled(false)
@@ -25,38 +27,34 @@ function ExerciseCard({ exercises, username }) {
 
   const completeExercise = () => {
     if(isCheckEnabled) {
-    const newWorkoutLog = {
-      reps: reps,
-      rounds: rounds
+    let updateExercise = {
+      exercise_id: exercises.exercise_id,
+      reps_performed: reps_performed,
+      sets_performed: sets_performed
     }
-    
-    setIsExerciseComplete(!isExerciseComplete)
-    localStorage.setItem(`${username} ${exercises.exercise_id} sets_performed `, newWorkoutLog.rounds)
-    localStorage.setItem(`${username} ${exercises.exercise_id} reps_performed `, newWorkoutLog.reps)
-    
+    setIsExerciseComplete(true)
+    updateWorkoutState(updateExercise)
+  
   }}
 
 
-
-  
- 
   return (
     <div className={`container flex p-3 m-3 flex-col rounded-2xl shadow-xl justify-center items-center w-auto ${isExerciseComplete ? 'bg-green-400 transition-colors duration-500': 'bg-orange-400 transition-colors duration-500'}`}>
-      <p>{exercises.exercise_id}</p>
-          Sets: {exercises.sets_performed} 
+      <p>{exercise_id}</p>
+          Sets: {sets_performed} 
           <input className='input w-24 mx-2 text-gray-400'
           onChange={onChange}
           type="number"
-          value={rounds || ''}
+          value={sets_performed || ''}
           placeholder='Sets'
-          id='rounds' />
-          Reps: {exercises.reps_performed}
+          id='sets_performed' />
+          Reps: {reps_performed}
           <input className='input w-24 mx-2 text-gray-400'
           onChange={onChange}
           type="number"
-          value={reps || ''}
+          value={reps_performed || ''}
           placeholder='Reps'
-          id='reps' />
+          id='reps_performed' />
           {isCheckEnabled && <button onClick={completeExercise}><FaCheck className='font-extrabold hover:scale-125'/></button>}
     </div>
   )
